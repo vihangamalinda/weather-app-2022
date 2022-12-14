@@ -1,14 +1,14 @@
-<div class="main-container">
+<div class="main-container" *ngIf="weatherData">
   <div class="upper-container">
-    <ng-container *ngIf="14<15">
+    <ng-container *ngIf="weatherData.main.temp <288.15">
       <img src="../assets/pictures/cold_weather.jpg" alt="cold weather">
     </ng-container>
-    <ng-container *ngIf="14>=15">
+    <ng-container *ngIf="weatherData.main.temp >=288.15">
       <img src="../assets/pictures/hot_weather.jpg" alt="hot weather">
     </ng-container>
     <div class="weather-data">
-      <div class="location">City</div>
-      <div class="temperature">{{15.50 | number: '1.0-0'}}°C</div>
+      <div class="location">{{weatherData.name}}</div>
+      <div class="temperature">{{weatherData.main.temp}} K</div>
     </div>
   </div>
   <div class="lower-container"> 
@@ -22,7 +22,7 @@
           <img src="../assets/pictures/temperature_icon.png" alt="Minimum temperature">
           <span>Min</span>
         </div>
-        <div class="info-block-value">10</div>
+        <div class="info-block-value">{{weatherData.main.temp_min}}</div>
       </div>
       <!--Max temp  -->
       <div class="info-block">
@@ -30,7 +30,7 @@
           <img src="../assets/pictures/hot_icon.png" alt="Maximum temperature">
           <span>Max</span>
         </div>
-        <div class="info-block-value">10</div>
+        <div class="info-block-value">{{weatherData.main.temp_max}}</div>
       </div>
       <!--Humidity  -->
       <div class="info-block">
@@ -38,7 +38,7 @@
           <img src="../assets/pictures/humidity_icon.png" alt="Humidity">
           <span>Humidity</span>
         </div>
-        <div class="info-block-value">10</div>
+        <div class="info-block-value">{{weatherData.main.humidity}}</div>
       </div>
       <!--Wind  -->
       <div class="info-block">
@@ -46,7 +46,7 @@
           <img src="../assets/pictures/wind_icon.png" alt="Wind">
           <span>Wind</span>
         </div>
-        <div class="info-block-value">10</div>
+        <div class="info-block-value">{{weatherData.wind.speed}}</div>
       </div>
      
     </div>
