@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="upper-container">
+    <ng-container *ngIf="14<15">
+      <img src="../assets/pictures/cold_weather.jpg" alt="cold weather">
+    </ng-container>
+    <ng-container *ngIf="14>=15">
+      <img src="../assets/pictures/hot_weather.jpg" alt="hot weather">
+    </ng-container>
+    <div class="weather-data">
+      <div class="location">City</div>
+      <div class="temperature">{{15.50 | number: '1.0-0'}}°C</div>
+    </div>
+  </div>
+  <div class="lower-container"> lower</div>
+</div>
+
+
+<router-outlet></router-outlet>
