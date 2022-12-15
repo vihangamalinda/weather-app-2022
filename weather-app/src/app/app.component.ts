@@ -9,13 +9,29 @@ import { CustomTypeInterface } from './types/CustomTypeInterface';
 })
 export class AppComponent implements OnInit  {
   title = 'weather-app';
-
+  cityName:string ='';
   weatherData ?:CustomTypeInterface;
 
   constructor(private weatherService:WeatherService){}
 
   ngOnInit():void{
-    this.weatherService.getWeatherData("London")
+    
+  }
+
+  onChangeHandler(val:string){
+    this.cityName ='';
+    this.cityName=val;
+      console.log(this.cityName);
+  }
+
+  onSumbit(){
+    if(this.cityName.length>1){
+    this.getWeatherData(this.cityName);
+    }
+  }
+
+  private getWeatherData(nameCity:string){
+    this.weatherService.getWeatherData(nameCity)
     .subscribe({
       next:(response)=>{
         this.weatherData = response;
@@ -23,4 +39,5 @@ export class AppComponent implements OnInit  {
       }
     })
   }
+
 }

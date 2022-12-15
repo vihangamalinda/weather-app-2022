@@ -1,4 +1,4 @@
-.main-container {
+.main-info-container {
   background-color: rgb(8, 8, 101);
   width: 400px;
   height: 70vh;
@@ -102,13 +102,17 @@ padding: 10px;
   }
 
 .info-block-label img {
-  position: abosulte;
+  /* position: abosulte; */
   width: 40%;
 }
 .info-block-label span {
-  position: abosulte;
+  /* position: absolute; */
   text-align: center;
   size: 0.8em;
+}
+
+.search-container{
+  position:relative;
 }
 
 /* .lower-container{

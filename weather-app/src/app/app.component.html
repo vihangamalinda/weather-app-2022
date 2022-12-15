@@ -1,57 +1,70 @@
-<div class="main-container" *ngIf="weatherData">
-  <div class="upper-container">
-    <ng-container *ngIf="weatherData.main.temp <288.15">
-      <img src="../assets/pictures/cold_weather.jpg" alt="cold weather">
-    </ng-container>
-    <ng-container *ngIf="weatherData.main.temp >=288.15">
-      <img src="../assets/pictures/hot_weather.jpg" alt="hot weather">
-    </ng-container>
-    <div class="weather-data">
-      <div class="location">{{weatherData.name}}</div>
-      <div class="temperature">{{weatherData.main.temp}} K</div>
-    </div>
+<div class="cus-container">
+  <div class="search-container">
+    <form (submit)="onSumbit()" >
+      <input 
+      #valInput
+      (input)="onChangeHandler(valInput.value)" 
+      type="text" 
+      placeholder="Enter City">
+      <button></button>
+    </form>
   </div>
-  <div class="lower-container"> 
-    <div class="more-info-label">
-      More Information
+  <div class="main-info-container" *ngIf="weatherData">
+    <div class="upper-container">
+      <ng-container *ngIf="weatherData.main.temp <288.15">
+        <img src="../assets/pictures/cold_weather.jpg" alt="cold weather">
+      </ng-container>
+      <ng-container *ngIf="weatherData.main.temp >=288.15">
+        <img src="../assets/pictures/hot_weather.jpg" alt="hot weather">
+      </ng-container>
+      <div class="weather-data">
+        <div class="location">{{weatherData.name}}</div>
+        <div class="temperature">{{weatherData.main.temp}} K</div>
+      </div>
     </div>
-    <div class="more-info-container">
-      <!-- Min temp -->
-      <div class="info-block">
-        <div class="info-block-label">
-          <img src="../assets/pictures/temperature_icon.png" alt="Minimum temperature">
-          <span>Min</span>
-        </div>
-        <div class="info-block-value">{{weatherData.main.temp_min}}</div>
+    <div class="lower-container"> 
+      <div class="more-info-label">
+        More Information
       </div>
-      <!--Max temp  -->
-      <div class="info-block">
-        <div class="info-block-label">
-          <img src="../assets/pictures/hot_icon.png" alt="Maximum temperature">
-          <span>Max</span>
+      <div class="more-info-container">
+        <!-- Min temp -->
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/pictures/temperature_icon.png" alt="Minimum temperature">
+            <span>Min</span>
+          </div>
+          <div class="info-block-value">{{weatherData.main.temp_min}} K</div>
         </div>
-        <div class="info-block-value">{{weatherData.main.temp_max}}</div>
-      </div>
-      <!--Humidity  -->
-      <div class="info-block">
-        <div class="info-block-label">
-          <img src="../assets/pictures/humidity_icon.png" alt="Humidity">
-          <span>Humidity</span>
+        <!--Max temp  -->
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/pictures/hot_icon.png" alt="Maximum temperature">
+            <span>Max</span>
+          </div>
+          <div class="info-block-value">{{weatherData.main.temp_max}} K</div>
         </div>
-        <div class="info-block-value">{{weatherData.main.humidity}}</div>
-      </div>
-      <!--Wind  -->
-      <div class="info-block">
-        <div class="info-block-label">
-          <img src="../assets/pictures/wind_icon.png" alt="Wind">
-          <span>Wind</span>
+        <!--Humidity  -->
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/pictures/humidity_icon.png" alt="Humidity">
+            <span>Humidity</span>
+          </div>
+          <div class="info-block-value">{{weatherData.main.humidity}}% </div>
         </div>
-        <div class="info-block-value">{{weatherData.wind.speed}}</div>
+        <!--Wind  -->
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/pictures/wind_icon.png" alt="Wind">
+            <span>Wind</span>
+          </div>
+          <div class="info-block-value">{{weatherData.wind.speed}} m/s</div>
+        </div>
+       
       </div>
-     
     </div>
   </div>
 </div>
+
 
 
 <router-outlet></router-outlet>
